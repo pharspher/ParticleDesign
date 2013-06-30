@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/control_item_radio_group"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/control_padding_left">
+    <RadioButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/radio_gravity"
+        android:text="@string/mode_gravity"
+    />
+    <RadioButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/radio_radius"
+        android:text="@string/mode_radius"
+    />
+</RadioGroup>

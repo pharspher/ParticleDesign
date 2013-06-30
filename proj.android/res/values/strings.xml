@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Particle Design</string>
+    <string name="mode_gravity">Gravity</string>
+    <string name="mode_radius">Radius</string>
+
+    <string name="PAGE_TITLE_PRESET">Preset</string>
+    <string name="PAGE_TITLE_EMITTER_CONFIG">Emitter</string>
+    <string name="PAGE_TITLE_PARTICLE_CONFIG">Particle</string>
+    <string name="PAGE_TITLE_GRAVITY_CONFIG">Gravity</string>
+    <string name="PAGE_TITLE_CODE_VIEW">Code</string>
+</resources>

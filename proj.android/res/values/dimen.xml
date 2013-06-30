@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="page_margin">1dip</dimen>
+    <dimen name="seekbar_width">150dip</dimen>
+    <dimen name="textview_seekbar_value_width">50dp</dimen>
+    <dimen name="control_padding_left">20dp</dimen>
+</resources>
