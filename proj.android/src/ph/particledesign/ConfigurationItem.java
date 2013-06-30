@@ -28,7 +28,7 @@ public class ConfigurationItem {
     public static final String TITLE_SPEED = "Speed";
 
     public static final int MODE_GRAVITY = 0;
-    public static final int MODE_RADIUS = MODE_GRAVITY + 11;
+    public static final int MODE_RADIUS = MODE_GRAVITY + 1;
 
     public String mTitle;
     public int mType;

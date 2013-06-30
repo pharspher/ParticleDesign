@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -18,9 +20,10 @@ public class ConfigurationListAdapter extends BaseAdapter {
         TextView mTitle;
         SeekBar mSeekbar;
         TextView mSeekbarValue;
+        RadioGroup mRadioGroup;
     }
 
-    public static native void setProgressValue(String tag, int value, int type);
+    public static native void setConfigurationValue(String tag, int value, int type);
 
     public ConfigurationListAdapter(MainActivity activity, ArrayList<ConfigurationItem> itemList) {
         mActivity = activity;
@@ -71,11 +74,32 @@ public class ConfigurationListAdapter extends BaseAdapter {
             inflatedView = inflater.inflate(R.layout.listitem_mode, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.mTitle = (TextView)inflatedView.findViewById(R.id.control_item_title);
+            viewHolder.mRadioGroup = (RadioGroup)inflatedView.findViewById(R.id.control_item_radio_group);
             inflatedView.setTag(viewHolder);
         } else {
             inflatedView = convertView;
             viewHolder = (ViewHolder)convertView.getTag();
         }
+        viewHolder.mRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup groupView, int id) {
+                if (id == R.id.radio_gravity) {
+                    mActivity.runOnGLThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            setConfigurationValue(item.mTag, 0, item.mType);
+                        }
+                    });
+                } else if (id == R.id.radio_radius) {
+                    mActivity.runOnGLThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            setConfigurationValue(item.mTag, 1, item.mType);
+                        }
+                    });
+                }
+            }
+        });
         return inflatedView;
     }
 
@@ -116,7 +140,7 @@ public class ConfigurationListAdapter extends BaseAdapter {
                 mActivity.runOnGLThread(new Runnable() {
                     @Override
                     public void run() {
-                        setProgressValue(item.mTag, finalProgress, item.mType);
+                        setConfigurationValue(item.mTag, finalProgress, item.mType);
                     }
                 });
                 finalValueView.setText(String.valueOf(progress));

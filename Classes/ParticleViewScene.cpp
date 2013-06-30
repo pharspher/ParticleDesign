@@ -89,7 +89,7 @@ extern "C" {
 void Java_ph_particledesign_MainActivity_onGLViewSizeChanged() {
 }
 
-void Java_ph_particledesign_ConfigurationListAdapter_setProgressValue(
+void Java_ph_particledesign_ConfigurationListAdapter_setConfigurationValue(
         JNIEnv *env, jobject obj,
         jstring tag,
         jint progress,
@@ -103,15 +103,28 @@ void Java_ph_particledesign_ConfigurationListAdapter_setProgressValue(
     pEmitter->resetSystem();
 
     cocos2d::CCString cppTag(cTag);
-    if (cppTag.m_sString == "speed") {
-        pEmitter->setSpeed(progress);
+    if (cppTag.m_sString == "mode") {
+        pEmitter->setEmitterMode(progress);
     } else if (cppTag.m_sString == "duration") {
         pEmitter->setDuration(progress);
-    } else if (cppTag.m_sString == "life") {
-        pEmitter->setLife(progress);
     } else if (cppTag.m_sString == "max_particle") {
         pEmitter->initWithTotalParticles((progress + 1) * 100);
+    } else if (cppTag.m_sString == "life") {
+        pEmitter->setLife(progress);
+    } else if (cppTag.m_sString == "life_var") {
+        pEmitter->setLifeVar(progress);
+    } else if (cppTag.m_sString == "start_size") {
+        pEmitter->setStartSize(progress);
+    } else if (cppTag.m_sString == "start_size_var") {
+        pEmitter->setStartSizeVar(progress);
+    } else if (cppTag.m_sString == "end_size") {
+        pEmitter->setEndSize(progress);
+    } else if (cppTag.m_sString == "end_size_var") {
+        pEmitter->setEndSizeVar(progress);
+    } else if (cppTag.m_sString == "speed") {
+        pEmitter->setSpeed(progress);
     }
+    pEmitter->setEmitterMode(0);
 
     env->ReleaseStringUTFChars(tag, cTag);
 }
