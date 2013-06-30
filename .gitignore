@@ -11,3 +11,6 @@ obj/
 proguard-project.txt
 proj.android/libs/armeabi/gdb.setup
 proj.android/libs/armeabi/gdbserver
+proj.android/jni/Android.mk
+proj.android/libs/armeabi/libgame.so
+proj.android/project.properties
